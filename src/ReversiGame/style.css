@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+/*body {*/
+  /*background: radial-gradient(600px at 50% 50% , #fff 20%, #000 100%);*/
+/*}*/
+
+reversi-h1 {
+  padding-top: 40px;
+  text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 26px;
+  transform: skewY(-3deg);
+  letter-spacing: 4px;
+  word-spacing: -8px;
+  color: tomato;
+  text-shadow:
+          -1px -1px 0 firebrick,
+          -2px -2px 0 firebrick,
+          -3px -3px 0 firebrick,
+          -4px -4px 0 firebrick,
+          -5px -5px 0 firebrick,
+          -30px 20px 40px dimgrey
+}
+
+#dropdown {
+  background: #2ECC40;
+  border: 1px solid #111;
+  letter-spacing: 4px;
+  text-align: center;
+  height: 30px;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 22px;
+  padding-left: 40px;
+  width: 350px;
+}
+
+#checkBox {
+  background: #2ECC40;
+  border: 1px solid #111;
+  letter-spacing: 4px;
+  text-align: center;
+  height: 30px;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 22px;
+  padding: 40px;
+  width: 60px;
+}
+
+/*#playGame {*/
+  /*background: #2ECC40;*/
+  /*border: 1px solid #111;*/
+  /*letter-spacing: 4px;*/
+  /*text-align: center;*/
+  /*height: 50px;*/
+  /*font-family: 'Oswald', Helvetica, sans-serif;*/
+  /*font-size: 16px;*/
+  /*padding: 5px;*/
+  /*width: 65px;*/
+/*}*/
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.cell {
+  background: #2ECC40;
+  border: 1px solid #111;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 70px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 70px;
+  border-radius: 0;
+  max-width: 12.5%;
+}
+
+.cell:focus {
+  outline: none;
+}
+
+.kbd-navigation .cell:focus {
+  background: #ddd;
+}
+
+.game {
+  clear: both;
+}
+
+.game-board {
+  position: absolute;
+  right:-250px;
+  /*top: 50%;*/
+  /*left: 50%;*/
+  height: 50%;
+  width: 50%;
+  margin-top: 180px;
+  float:right;
+transform: translate(-50%, -50%);
+}
+
+.game-left-side {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.game-info {
+  float: left;
+}
+
+.available-cell {
+  cursor: pointer;
+}
+
+.not-available-cell {
+  cursor: not-allowed;
+}
+
+.marker {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  margin-left: 10%;
+  margin-top: 10%;
+  border: 4px solid white;
+}
+
+.marker.black {
+  background: #00001F;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.marker.white {
+  background: #ccad91;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}

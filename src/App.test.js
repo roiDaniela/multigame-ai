@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PlayHotDog from './HotDogGame/PlayHotDog';
 import App from './App';
 
 it('renders without crashing', () => {
