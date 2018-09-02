@@ -14,32 +14,21 @@ class Home extends Component {
 
         //get All users
         this.users = {"302882527": "Roi"}
-
         this.state = {isHideChat: false};
         this.steps = [
             {
                 id: '1',
-                message: 'Welcome to Multi-Game AI!',
+                message: 'What is your name?',
                 trigger: '2',
             },
             {
                 id: '2',
-                message: 'What is your id number?',
+                user: true,
                 trigger: '3',
             },
             {
                 id: '3',
-                user: true,
-                trigger: '4',
-            },
-            {
-                id: '4',
-                message: 'Hi {previousValue}, your last score is 100!',
-                trigger: '5',
-            },
-            {
-                id: '5',
-                message: '{previousValue} Select your game and enjoy!',
+                message: 'Hi {previousValue}, nice to meet you!',
                 end: true,
             }
         ];
@@ -81,7 +70,7 @@ class Home extends Component {
                     Start Bot
                 </Button>
 
-                {this.state.isHideChat && <ChatBot steps={this.steps} />}
+                {this.state.isHideChat && <ChatBot  recognitionEnable={true} steps={this.steps} />}
             </div>
 
         );

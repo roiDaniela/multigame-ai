@@ -131,12 +131,22 @@ export default class Game extends React.Component {
 
     // do robot move "best move"
     doRobotMove() {
-        if ((this.state.blackisAi) && (!this.state.xIsNext)) {
-            var bestMove = this.ai.doMove();
-            if (bestMove !== null) {
-                this.handleClick(bestMove);
+        setTimeout(()=> {
+            if ((this.state.blackisAi) && (!this.state.xIsNext)) {
+                var bestMove = this.ai.doMove();
+                if (bestMove !== null) {
+                    this.handleClick(bestMove);
+                }
             }
-        }
+            }, 1000)
+    }
+
+    delayState() {
+        setTimeout(() => {
+            this.setState({
+                clicked: false
+            })
+        }, 100000);
     }
 
     // jump to step from history

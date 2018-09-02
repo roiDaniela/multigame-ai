@@ -7,6 +7,7 @@ import axios from 'axios';
 import PlayHotDog from "./HotDogGame/PlayHotDog";
 import Home from './HotDogGame/Home'
 import ReversiGame from './ReversiGame/Game'
+import TicTacToe from './Tictactoe/TicTacToe'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route path="/reversi" component={ReversiGame}/>
                     <Route path="/hotdog" component={PlayHotDog}/>
+                    <Route path="/tictactoe" render={(props) => <TicTacToe {...props} singlePlayer={true} />}/>
                 </div>
             </BrowserRouter>
           </div>
