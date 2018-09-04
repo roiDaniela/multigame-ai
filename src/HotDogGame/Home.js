@@ -4,16 +4,12 @@ import '../App.css';
 import ChatBot from 'react-simple-chatbot';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import PlayHotDog from "./PlayHotDog";
-import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
         //get All users
-        this.users = {"302882527": "Roi"}
         this.state = {isHideChat: false};
         this.steps = [
             {
@@ -29,8 +25,26 @@ class Home extends Component {
             {
                 id: '3',
                 message: 'Hi {previousValue}, nice to meet you!',
+                trigger: '4',
+            },
+            {
+                id: '4',
+                message: 'Please choose which game you want to play',
+                trigger: '5',
+            },
+            {
+                id: '5',
+                options: [
+                    { value: "hotdog", label: 'hotdog', trigger: '6' },
+                    { value: "tictactoe", label: 'tictactoe', trigger: '6' },
+                    { value: "reversi", label: 'reversi', trigger: '6' },
+                ],
+            },
+            {
+                id: '6',
+                message: 'You choose {previousValue}',
                 end: true,
-            }
+            },
         ];
 
         // This binding is necessary to make `this` work in the callback
@@ -52,6 +66,20 @@ class Home extends Component {
         // return result.name;
     }
 
+    handleEnd({ steps, values }) {
+        // console.log(steps);
+        // console.log(values);
+        if(`${values[1]}` == "hotdog"){
+            window.location = '/hotdog'
+        }
+        else if(`${values[1]}` == "tictactoe"){
+            window.location = '/tictactoe'
+        }
+        else if(`${values[1]}` == "reversi"){
+            window.location = '/reversi'
+        }
+    }
+
     hideChatbot(){
         this.setState(prevState => ({
             isHideChat: !prevState.isHideChat
@@ -70,7 +98,7 @@ class Home extends Component {
                     Start Bot
                 </Button>
 
-                {this.state.isHideChat && <ChatBot  recognitionEnable={true} steps={this.steps} />}
+                {this.state.isHideChat && <ChatBot  handleEnd={this.handleEnd} recognitionEnable={true} steps={this.steps} />}
             </div>
 
         );
