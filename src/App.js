@@ -10,12 +10,40 @@ import ReversiGame from './ReversiGame/Game'
 import TicTacToe from './Tictactoe/TicTacToe'
 import Login from './Login/Login'
 import Signup from './Signup/Signup'
+import Logout from './Logout/Logout'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
+import 'whatwg-fetch';
+import { getFromStorage, setInStorage } from '../../utils/storage'
+import {observer, inject} from 'mobx-react';
 
 
-
+@inject('store')
+@observer
 class App extends Component {
-
+    componentDidMount() {
+        const obj = getFromStorage('accountInfo');
+        
+        if (obj && obj.token) {
+          const {token} = obj;
+          this.props.store({
+            isLoading: true  
+          })
+          fetch('/api/account/verify?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+              if (json.success) {
+                this.setState({
+                  token,
+                  isLoading: false
+                })
+              } else {
+                this.setState({
+                  isLoading: false,
+                })
+              }
+            })
+        }
+    }
     render() {
         return (
           <div className="App">
@@ -25,7 +53,7 @@ class App extends Component {
                     <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                        <a className="navbar-brand" href="#">WebSiteName</a>
+                        <a className="navbar-brand" href="#">Welcome, Guest</a>
                         </div>
                         <ul className="nav navbar-nav">
                         <li className="active"><Link to="/">Home</Link></li>
@@ -37,7 +65,8 @@ class App extends Component {
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
                             <li><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
-                        
+                            <li><Link to="/logout"><span className="glyphicon glyphicon glyphicon-log-out"></span> Logout</Link></li>
+
                         </ul>
                     </div>
                     </nav>
@@ -47,6 +76,7 @@ class App extends Component {
                     <Route path="/tictactoe" render={(props) => <TicTacToe {...props} singlePlayer={true} />}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/signup" component={Signup}/>
+                    <Route path="/logout" component={Logout}/>
                 </div>
             </BrowserRouter>
           </div>

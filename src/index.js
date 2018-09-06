@@ -4,10 +4,14 @@ import './index.css';
 import PlayHotDog from './HotDogGame/PlayHotDog';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'mobx-react';
+import store from './store/Store'
 
-
-ReactDOM.render(
-    <App />,
+ReactDOM.render((
+    <Provider store = {store}>
+        <App />
+    </Provider>)    
+    ,
     document.getElementById('root')
 );
 
