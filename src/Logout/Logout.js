@@ -1,8 +1,40 @@
 import React, { Component } from 'react';
 import './style.css'
+import { inject } from 'mobx-react'
+import 'whatwg-fetch';
+import { getFromStorage, setInStorage } from '../utils/storage'
 
-
+@inject('store')
 class Logout extends Component {
+
+    
+    onClickLogout = event => {
+        
+
+        const obj = getFromStorage('accountInfo');
+        
+        if (obj && obj.token) {
+          const {token} = obj;
+          this.props.store.updateData({
+            isLoading: true  
+          })
+          fetch('/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+              if (json.success) {
+                this.props.store.updateData({
+                  token: '',
+                  isLoading: false
+                })
+              } else {
+                this.props.store.updateData({
+                  isLoading: false,
+                })
+              }
+            })
+        }
+    
+      }
     render() {
         return (
             <div className="container" style={{"margin-top":"40px"}}>
@@ -24,7 +56,7 @@ class Logout extends Component {
                                         <div className="row">
                                             <div className="col-sm-12 col-md-10  col-md-offset-1 ">
                                                 <div className="form-group">
-                                                    <input type="button" onClick={this.onClickLogout} className="btn btn-lg btn-primary btn-block" value="Sign Out"/>
+                                                    <input type="button" onClick={this.onClickLogout} className="btn btn-lg btn-primary btn-block" value="Logout"/>
                                                 </div>
                                             </div>
                                         </div>
