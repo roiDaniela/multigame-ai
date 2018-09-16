@@ -18,7 +18,7 @@ class Logout extends Component {
           this.props.store.updateData({
             isLoading: true  
           })
-          fetch('/api/account/logout?token=' + token)
+          fetch('http://localhost:8080/api/account/logout?token=' + token)
             .then(res => res.json())
             .then(json => {
               if (json.success) {

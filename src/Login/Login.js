@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css'
 import { observer, inject } from 'mobx-react';
 import 'whatwg-fetch';
-import { getFromStorage, setInStorage } from '../utils/storage'
+// import { getFromStorage, setInStorage } from '../utils/storage'
 
 @inject('store')
 @observer
@@ -37,7 +37,7 @@ class Login extends Component {
             .then(json => {
               if (json.success) {
                 console.log("json.token"+json.token)
-                setInStorage('accountInfo',{token: json.token});
+                // setInStorage('accountInfo',{token: json.token});
                 this.props.store.updateData({
                   loginEmail: "",
                   loginPassword: "",

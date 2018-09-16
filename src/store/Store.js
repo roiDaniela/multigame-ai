@@ -1,4 +1,5 @@
-import { observable, action } from "mobx";
+import { autorun,observable, action } from "mobx";
+import { setInStorage } from '../utils/storage'
 
 class Store {
     @observable data = { 
@@ -15,8 +16,15 @@ class Store {
     }
     @action updateData = d => {
         this.data = {...this.data ,  ...d  }
+        
+
+
     }
 }
 
 const store = new Store(); 
+
+let disposer = autorun( () => setInStorage('accountInfo',{'token': store.data.token}));
+
+
 export default store;
