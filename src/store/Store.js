@@ -1,4 +1,4 @@
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 
 class Store {
     @observable data = { 
@@ -13,8 +13,8 @@ class Store {
         signUpEmail: '',
         signUpPassword: ''
     }
-    @action dataSet = ( data ) => {
-        this.data = {...this.data ,  ...data  }
+    @action updateData = d => {
+        this.data = {...this.data ,  ...d  }
     }
 }
 
