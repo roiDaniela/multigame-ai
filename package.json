@@ -24,7 +24,7 @@
     "victory": "^30.3.0"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node ./server/index.js"
   },
   "proxy": "http://localhost:3001/"
 }
