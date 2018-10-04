@@ -6,7 +6,8 @@ module.exports = {
 
       // instantiate a new Clarifai app passing in your clientId and clientSecret
         const app = new Clarifai.App({
-            apiKey: '185dac78c93743398b48f19e8a744bb7'
+           // apiKey: '185dac78c93743398b48f19e8a744bb7'
+           apiKey: 'bdae6513ab894b24a3c87de25374410f'
         });
 
       // predict the contents of an image by passing in a url
