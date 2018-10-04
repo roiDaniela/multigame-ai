@@ -29,7 +29,7 @@ class App extends Component {
           this.props.store.updateData({
             isLoading: true  
           })
-          fetch('http://localhost:8080/api/account/verify?token=' + token)
+          fetch('http://kobia.xyz:8080/api/account/verify?token=' + token)
             .then(res => res.json())
             .then(json => {
               if (json.success) {
