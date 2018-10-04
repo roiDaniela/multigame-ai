@@ -3,6 +3,7 @@ import './style.css'
 import { inject, observer } from 'mobx-react';
 import 'whatwg-fetch';
 import {  Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 @observer
 @inject('store')
@@ -48,18 +49,19 @@ class Signup extends Component {
         .then(res => res.json())
         .then(json => {
             if (json.success) {
-            console.log("json.token"+json.token)
-            //setInStorage('accountInfo',{token: json.token});
-            this.props.store.updateData({
-                loginEmail: signUpFirstName,
-                loginPassword: signUpPassword,
-                signUpFirstName: '',
-                signUpLastName: '',
-                signUpEmail: '',
-                signUpPassword: '',
-                signUpError: json.message,
-                isLoading: false
-            }) 
+                this.props.history.push("/login")
+                console.log("json.token"+json.token)
+                //setInStorage('accountInfo',{token: json.token});
+                this.props.store.updateData({
+                    loginEmail: signUpEmail,
+                    loginPassword: signUpPassword,
+                    signUpFirstName: '',
+                    signUpLastName: '',
+                    signUpEmail: '',
+                    signUpPassword: '',
+                    loginError: "Signed Up successfuly , Click to Login",
+                    isLoading: false
+                }) 
             } else {
             this.props.store.updateData({
                 signUpError: json.message,
@@ -148,4 +150,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default withRouter(Signup);

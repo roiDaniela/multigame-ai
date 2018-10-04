@@ -3,6 +3,7 @@ import './style.css'
 import { inject } from 'mobx-react'
 import 'whatwg-fetch';
 import { getFromStorage, setInStorage } from '../utils/storage'
+import { withRouter } from 'react-router-dom'
 
 @inject('store')
 class Logout extends Component {
@@ -24,6 +25,8 @@ class Logout extends Component {
             .then(res => res.json())
             .then(json => {
               if (json.success) {
+                this.props.history.push("/login");
+
                 this.props.store.updateData({
                   token: '',
                   isLoading: false,
@@ -84,4 +87,4 @@ class Logout extends Component {
     }
 }
 
-export default Logout;
+export default withRouter(Logout);

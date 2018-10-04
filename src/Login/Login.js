@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react';
 import 'whatwg-fetch';
 import { getFromStorage, setInStorage } from '../utils/storage'
 import {  Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 @inject('store')
 @observer
@@ -40,6 +41,7 @@ class Login extends Component {
             .then(json => {
               if (json.success) {
                 console.log("json.token"+json.token)
+                this.props.history.push("/")
                 setInStorage('accountInfo',{token: json.token});
                 this.props.store.updateData({
                   loginEmail: "",
@@ -122,4 +124,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default  withRouter(Login);

@@ -74,11 +74,11 @@ class App extends Component {
 
                     <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
-                        <div className="navbar-header">
-                        <span className="navbar-brand" >Welcome</span>
-                        </div>
+                        {/* <div className="navbar-header">
+                        <span className="disabled navbar-brand" >Welcome</span>
+                        </div> */}
                         <ul className="nav navbar-nav">
-                          <li className="active"><Link to="/">Home</Link></li>
+                          <li ><Link to="/">Home</Link></li>
                           <li ><Link to="/reversi">Reversi</Link></li>
                           <li ><Link to="/hotdog">Hot dog</Link></li>
                           <li ><Link to="/tictactoe">Tic-Tac-Toe</Link></li>
@@ -109,9 +109,9 @@ class App extends Component {
 
                   <nav className="navbar navbar-inverse">
                   <div className="container-fluid">
-                      <div className="navbar-header">
-                      <span className="navbar-brand"  >Welcome</span>
-                      </div>
+                      {/* <div className="navbar-header">
+                      <span className="disabled navbar-brand"  >Welcome</span>
+                      </div> */}
                       <ul className="nav navbar-nav">
                         <li className="disabled"><Link to="/login">Home</Link></li>
                         <li className="disabled"><Link to="/login">Reversi</Link></li>
