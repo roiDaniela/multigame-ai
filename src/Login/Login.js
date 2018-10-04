@@ -27,7 +27,7 @@ class Login extends Component {
             isLoading: true
           })
           console.log(this.props.store.data)
-          fetch('kobia.xyz:8080/api/account/login', { 
+          fetch('http://kobia.xyz:8080/api/account/login', { 
             method: 'POST', 
             headers: {
               'Content-Type': 'application/json'

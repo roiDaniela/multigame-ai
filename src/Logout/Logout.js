@@ -21,7 +21,7 @@ class Logout extends Component {
           this.props.store.updateData({
             isLoading: true  
           })
-          fetch('kobia.xyz:8080/api/account/logout?token=' + token)
+          fetch('http://kobia.xyz:8080/api/account/logout?token=' + token)
             .then(res => res.json())
             .then(json => {
               if (json.success) {
