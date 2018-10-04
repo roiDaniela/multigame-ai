@@ -117,7 +117,7 @@ class App extends Component {
                         <li className="disabled"><Link to="/login">Reversi</Link></li>
                         <li className="disabled"><Link to="/login">Hot dog</Link></li>
                         <li className="disabled"><Link to="/login">Tic-Tac-Toe</Link></li>
-                        <li className="disabled"><a href="mailto:balanga10@gmail.com?Subject=hotdog%20Contact">Contact me</a></li>
+                        <li><a href="mailto:balanga10@gmail.com?Subject=hotdog%20Contact">Contact me</a></li>
                       </ul>
                       <ul className="nav navbar-nav navbar-right">
                           <li><Link to="/signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>

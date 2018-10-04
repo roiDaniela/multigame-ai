@@ -5,6 +5,7 @@ import ChatBot from 'react-simple-chatbot';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+
 import ReactDOM from 'react-dom';
 import $ from 'jquery/src/jquery';
 import List from './List';
@@ -17,7 +18,7 @@ class PlayHotDog extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imgUrl: '',
+            imgUrl: "",
             items: [],
             data: [
             ]
@@ -57,7 +58,7 @@ class PlayHotDog extends Component {
     render () {
         return (<div>
             <Search state={this.state} handleClick={this.handleClick} handleKeyPress={this.handleKeyPress}/>
-            <Viewer imgUrl={this.state.imgUrl}/>
+            {this.state.imgUrl?(<Viewer imgUrl={this.state.imgUrl}/>):(false)}
             <List items={this.state.data}/>
             <Chart data={this.state.data}/>
         </div>)
