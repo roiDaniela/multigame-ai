@@ -34,7 +34,7 @@ class Signup extends Component {
             isLoading: true
         })
         console.log(this.props.store.data)
-        fetch('http://localhost:8080/api/account/signup', { 
+        fetch('kobia.xyz:8080/api/account/signup', { 
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
